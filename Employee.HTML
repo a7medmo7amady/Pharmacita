@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .table-container {
+            margin: 50px auto;
+            max-width: 1200px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .table td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container table-container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Employee Details</h2>
+            <!-- Add Employee Button -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
+                Add New Employee
+            </button>
+        </div>
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th>E_ID</th>
+                    <th>E_Name</th>
+                    <th>E_Age</th>
+                    <th>E_PhoneNumber</th>
+                    <th>E_Address</th>
+                    <th>E_Role</th>
+                    <th>Employee Type</th>
+                    <th>Hire Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>101</td>
+                    <td>Youssef Islam</td>
+                    <td>18</td>
+                    <td>0212654</td>
+                    <td>Hay al ashgar</td>
+                    <td>Software Engineer</td>
+                    <td>Lab Employee</td>
+                    <td>2022-05-15</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Employee Modal -->
+    <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addEmployeeModalLabel">Add New Employee</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addEmployeeForm">
+                        <div class="mb-3">
+                            <label for="employeeId" class="form-label">Employee ID</label>
+                            <input type="text" class="form-control" id="employeeId">
+                        </div>
+                        <div class="mb-3">
+                            <label for="employeeName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="employeeName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="employeeAge" class="form-label">Age</label>
+                            <input type="number" class="form-control" id="employeeAge">
+                        </div>
+                        <div class="mb-3">
+                            <label for="employeePhone" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="employeePhone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="employeeAddress" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="employeeAddress">
+                        </div>
+                        <div class="mb-3">
+                            <label for="employeeRole" class="form-label">Role</label>
+                            <input type="text" class="form-control" id="employeeRole">
+                        </div>
+                        <div class="mb-3">
+                            <label for="employeeType" class="form-label">Employee Type</label>
+                            <select class="form-select" id="employeeType">
+                                <option value="" selected disabled>Select Type</option>
+                                <option value="Lab Employee">Lab Employee</option>
+                                <option value="Pharmacy Employee">Pharmacy Employee</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="hireDate" class="form-label">Hire Date</label>
+                            <input type="date" class="form-control" id="hireDate">
+                        </div>
+                        <button type="button" class="btn btn-primary w-100">Add Employee</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

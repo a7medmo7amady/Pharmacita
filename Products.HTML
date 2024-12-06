@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .table-container {
+            margin: 50px auto;
+            max-width: 1200px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .table td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container table-container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Product Management</h2>
+            <!-- Add Product Button -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                Add New Product
+            </button>
+        </div>
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Production Date</th>
+                    <th>Expiry Date</th>
+                    <th>Supplier ID</th>
+                    <th>Quantity in Stock</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>Skin Lotion</td>
+                    <td>Skin Care</td>
+                    <td>2023-05-01</td>
+                    <td>2025-05-01</td>
+                    <td>SUP123</td>
+                    <td>50</td>
+                    <td>Moisturizing lotion for dry skin</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProductModalLabel">Add New Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addProductForm">
+                        <div class="mb-3">
+                            <label for="productId" class="form-label">Product ID</label>
+                            <input type="text" class="form-control" id="productId">
+                        </div>
+                        <div class="mb-3">
+                            <label for="productName" class="form-label">Product Name</label>
+                            <input type="text" class="form-control" id="productName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Category</label>
+                            <select class="form-select" id="category">
+                                <option value="" selected disabled>Select Category</option>
+                                <option value="Medicine">Medicine</option>
+                                <option value="Restricted Medicine">Restricted Medicine</option>
+                                <option value="Baby Care">Baby Care</option>
+                                <option value="Perfumes">Perfumes</option>
+                                <option value="FirstAid Kit">FirstAid Kit</option>
+                                <option value="Accessories">Accessories</option>
+                                <option value="Skin Care">Skin Care</option>
+                                <option value="Hair Care">Hair Care</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="productionDate" class="form-label">Production Date</label>
+                            <input type="date" class="form-control" id="productionDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="expiryDate" class="form-label">Expiry Date</label>
+                            <input type="date" class="form-control" id="expiryDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="supplierId" class="form-label">Supplier ID</label>
+                            <input type="text" class="form-control" id="supplierId">
+                        </div>
+                        <div class="mb-3">
+                            <label for="quantityInStock" class="form-label">Quantity in Stock</label>
+                            <input type="number" class="form-control" id="quantityInStock">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" rows="3"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary w-100">Add Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

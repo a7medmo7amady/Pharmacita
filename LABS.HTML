@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Tests</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .table-container {
+            margin: 50px auto;
+            max-width: 1200px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .table td {
+            vertical-align: middle;
+        }
+        h2 {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Lab Tests Section -->
+    <div class="container table-container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Lab Tests</h2>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addLabTestModal">
+                Add New Lab Test
+            </button>
+        </div>
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th>LT_ID</th>
+                    <th>LT_Name</th>
+                    <th>LT_Category</th>
+                    <th>LT_Description</th>
+                    <th>LT_Price</th>
+                    <th>Result Time Frame</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>201</td>
+                    <td>Blood Test</td>
+                    <td>Diagnostics</td>
+                    <td>Checks for various blood conditions.</td>
+                    <td>$50</td>
+                    <td>24 Hours</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Lab Test Modal -->
+    <div class="modal fade" id="addLabTestModal" tabindex="-1" aria-labelledby="addLabTestModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addLabTestModalLabel">Add New Lab Test</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addLabTestForm">
+                        <div class="mb-3">
+                            <label for="labTestId" class="form-label">Lab Test ID</label>
+                            <input type="text" class="form-control" id="labTestId" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="labTestName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="labTestName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="labTestCategory" class="form-label">Category</label>
+                            <input type="text" class="form-control" id="labTestCategory" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="labTestDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="labTestDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="labTestPrice" class="form-label">Price</label>
+                            <input type="number" class="form-control" id="labTestPrice" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="resultTimeFrame" class="form-label">Result Time Frame</label>
+                            <input type="text" class="form-control" id="resultTimeFrame" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Add Lab Test</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
