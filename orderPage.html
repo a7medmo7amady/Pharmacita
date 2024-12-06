@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pharmacy Orders Management</title>
-    <!-- Bootstrap CSS -->
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -31,7 +31,6 @@
     <div class="container table-container">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2>Pharmacy Orders</h2>
-            <!-- Add Order Button -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addOrderModal">
                 Add New Order
             </button>
@@ -46,12 +45,10 @@
                 </tr>
             </thead>
             <tbody id="orderTableBody">
-                <!-- Populated dynamically -->
             </tbody>
         </table>
     </div>
 
-    <!-- Add Order Modal -->
     <div class="modal fade" id="addOrderModal" tabindex="-1" aria-labelledby="addOrderModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -84,20 +81,15 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Add Order Form Submission
         document.getElementById('addOrderForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent form default submission
-
-            // Gather form data
+            e.preventDefault(); 
             const orderId = document.getElementById('orderId').value;
             const productId = document.getElementById('productId').value;
             const customerId = document.getElementById('customerId').value;
             const orderDate = document.getElementById('orderDate').value;
 
-            // Append new row to table
             const tableBody = document.getElementById('orderTableBody');
             const newRow = `
                 <tr>
@@ -109,10 +101,8 @@
             `;
             tableBody.innerHTML += newRow;
 
-            // Clear the form
             document.getElementById('addOrderForm').reset();
 
-            // Close the modal
             const modal = bootstrap.Modal.getInstance(document.getElementById('addOrderModal'));
             modal.hide();
         });
