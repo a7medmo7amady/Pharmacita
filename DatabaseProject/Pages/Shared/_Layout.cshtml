@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Pharmacy Management</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    @if (Context.Session.GetString("IsLoggedInadmin") == "true")
+    {
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Pharmacy Management</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="/Dashboard">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/CustomerList">Customers</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/EmployeeList">Employees</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/LabTests">Lab Tests</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/LabTestsRequests">Lab Tests Requests</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Orders">Orders</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Products">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/SupplierDetails">Suppliers</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/AddAdmin">Add Admin</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/AdminResetPassword">Change Password</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Logout?handler=Logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+    else if (Context.Session.GetString("IsLoggedInCustomer") == "true")
+    {
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Pharmacy Management</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="/CustomerLabTests">Lab Tests</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/CustomerProducts">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/CustomerResetPassword">Change Password</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/Logout?handler=Logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+    <div class="container mt-4">
+        @RenderBody()
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
