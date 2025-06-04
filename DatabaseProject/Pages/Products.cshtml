@@ -1,0 +1,121 @@
+﻿@page
+@model DatabaseProject.Pages.ProductsModel
+@using DatabaseProject.Models;
+
+@{
+    ViewData["Title"] = "Pharmacy Products Management";
+}
+
+<div class="container table-container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>@ViewData["Title"]</h2>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">
+            Add New Product
+        </button>
+    </div>
+    <table class="table table-bordered table-hover table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Product Type</th>
+                <th>Production Date</th>
+                <th>Expiration Date</th>
+                <th>Quantity In Stock</th>
+                <th>Product Description</th>
+                <th>Supplier Name</th>
+                <th>Product Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.ProductList)
+            {
+                <tr>
+                    <td>@product.Product_ID</td>
+                    <td>@product.Product_name</td>
+                    <td>@product.Product_type</td>
+                    <td>@product.Production_date.ToString("yyyy-MM-dd")</td>
+                    <td>@product.Expiration_Date.ToString("yyyy-MM-dd")</td>
+                    <td>@product.Quantity_IN_Stock</td>
+                    <td>@product.Product_Description</td>
+                    <td>
+                        @Model.SupplierList.FirstOrDefault(s => s.Supplier_ID == product.Supplier_ID)?.Sup_Name
+                    </td>
+                    <td>@product.Product_price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Add Product Modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProductLabel">Add New Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="Product_name" class="form-label">Product Name</label>
+                        <input type="text" class="form-control" id="Product_name" asp-for="NewProduct.Product_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Product_type" class="form-label">Product Type</label>
+                        <select class="form-select" id="Product_type" asp-for="NewProduct.Product_type" required>
+                            <option value="" disabled selected>Select Product</option>
+                            <option value="Skincare">Skincare</option>
+                            <option value="Haircare">Haircare</option>
+                            <option value="Perfumes">Perfumes</option>
+                            <option value="BabyCare">Baby Care</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Restricted_MED">Restricted Medicine</option>
+                            <option value="Medicine">Medicine</option>
+                            <option value="FirstAidKit">First Aid Kit</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Production_date" class="form-label">Production Date</label>
+                        <input type="date" class="form-control" id="Production_date" asp-for="NewProduct.Production_date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Expiration_Date" class="form-label">Expiration Date</label>
+                        <input type="date" class="form-control" id="Expiration_Date" asp-for="NewProduct.Expiration_Date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Quantity_IN_Stock" class="form-label">Quantity In Stock</label>
+                        <input type="number" class="form-control" id="Quantity_IN_Stock" asp-for="NewProduct.Quantity_IN_Stock" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Product_Description" class="form-label">Product Description</label>
+                        <textarea class="form-control" id="Product_Description" asp-for="NewProduct.Product_Description" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Supplier_ID" class="form-label">Supplier ID</label>
+                        <input type="text" class="form-control" id="Supplier_ID" asp-for="NewProduct.Supplier_ID" required>
+                    </div>
+                    <label for="Supplier_ID" class="form-label">Supplier</label>
+                    <select class="form-select" id="Supplier_ID" asp-for="NewProduct.Supplier_ID" required>
+                        <option value="">-- Select Supplier --</option>
+                        @foreach (var supplier in Model.SupplierList)
+                        {
+                            <option value="@supplier.Supplier_ID">@supplier.Sup_Name (@supplier.Supplier_ID)</option>
+                        }
+                    </select>
+                    <div class="mb-3">
+                        <label for="Product_price" class="form-label">Product Price</label>
+                        <input type="number" class="form-control" id="Product_price" asp-for="NewProduct.Product_price" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

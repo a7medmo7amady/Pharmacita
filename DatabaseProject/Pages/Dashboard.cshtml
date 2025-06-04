@@ -1,0 +1,121 @@
+﻿@page
+@model DatabaseProject.Pages.DashboardModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>Dashboard</h1>
+
+<div class="container">
+    <!-- Customer Demographics -->
+    <div class="mb-5">
+        <h2>Customer Demographics</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Payment Method</th>
+                    <th>Customer Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CustomerDemographics)
+                {
+                    <tr>
+                        <td>@item.PaymentInfo</td>
+                        <td>@item.CustomerCount</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Employee Analysis -->
+    <div class="mb-5">
+        <h2>Employee Salaries by Role</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Role</th>
+                    <th>Average Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.EmployeeSalaries)
+                {
+                    <tr>
+                        <td>@item.Role</td>
+                        <td>@item.AverageSalary</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Product Stock -->
+    <div class="mb-5">
+        <h2>Product Stock by Type</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product Type</th>
+                    <th>Total Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ProductStocks)
+                {
+                    <tr>
+                        <td>@item.ProductType</td>
+                        <td>@item.TotalStock</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Monthly Orders -->
+    <div class="mb-5">
+        <h2>Monthly Orders</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Year</th>
+                    <th>Total Orders</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.MonthlyOrders)
+                {
+                    <tr>
+                        <td>@item.Month</td>
+                        <td>@item.Year</td>
+                        <td>@item.TotalOrders</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Lab Test Categories -->
+    <div class="mb-5">
+        <h2>Lab Test Prices by Category</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Average Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.LabTestCategories)
+                {
+                    <tr>
+                        <td>@item.Category</td>
+                        <td>@item.AveragePrice</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

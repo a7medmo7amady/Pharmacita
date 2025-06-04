@@ -1,0 +1,88 @@
+﻿@page
+@model DatabaseProject.Pages.CustomerListModel
+@using DatabaseProject.Models;
+
+@{
+    ViewData["Title"] = "Customers Details";
+}
+
+<div class="container table-container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Customers Details</h2>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCustomerModal">
+            Add New Customer
+        </button>
+    </div>
+    <table class="table table-bordered table-hover table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>C_ID</th>
+                <th>C_Name</th>
+                <th>C_Phone</th>
+                <th>C_Address</th>
+                <th>C_age</th>
+                <th>Payment Info</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model.Customerlist)
+            {
+                <tr>
+                    <td>@customer.C_ID</td>
+                    <td>@customer.C_NAME</td>
+                    <td>@customer.C_Phone</td>
+                    <td>@customer.C_Address</td>
+                    <td>@customer.C_age</td>
+                    <td>@customer.PAYMENT_INFO</td>
+                    <td>
+                        <a asp-page="OrderHistory" asp-route-id="@customer.C_ID">Order History</a> |
+                        <a asp-page="LabTestsHistory" asp-route-id="@customer.C_ID">Lab Test History</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Add Customer Modal -->
+<div class="modal fade" id="addCustomerModal" tabindex="-1" aria-labelledby="addCustomerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addCustomerModalLabel">Add New Customer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="C_Name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="C_Name" asp-for="NewCustomer.C_NAME" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="C_Phone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="C_Phone" asp-for="NewCustomer.C_Phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="C_Address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="C_Address" asp-for="NewCustomer.C_Address" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="PaymentInfo" class="form-label">Payment Info</label>
+                        <input type="text" class="form-control" id="PAYMENT_INFO" asp-for="NewCustomer.PAYMENT_INFO" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="C_age" class="form-label">C_age</label>
+                        <input type="text" class="form-control" id="C_age" asp-for="NewCustomer.C_age" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

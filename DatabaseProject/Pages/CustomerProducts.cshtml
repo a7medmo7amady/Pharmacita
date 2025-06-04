@@ -1,0 +1,38 @@
+﻿@page
+@model DatabaseProject.Pages.CustomerProductsModel
+@using DatabaseProject.Models;
+
+@{
+    ViewData["Title"] = "Pharmacy Products";
+}
+
+<div class="container table-container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+    <table class="table table-bordered table-hover table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>Product Name</th>
+                <th>Product Type</th>
+                <th>Production Date</th>
+                <th>Expiration Date</th>
+                <th>Product Description</th>
+                <th>Product Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.ProductList)
+            {
+                <tr>
+                    <td>@product.Product_name</td>
+                    <td>@product.Product_type</td>
+                    <td>@product.Production_date.ToString("yyyy-MM-dd")</td>
+                    <td>@product.Expiration_Date.ToString("yyyy-MM-dd")</td>
+                    <td>@product.Product_Description</td>
+                    <td>@product.Product_price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

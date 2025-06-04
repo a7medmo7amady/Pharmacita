@@ -1,0 +1,44 @@
+﻿@page
+@model DatabaseProject.Pages.OrderHistoryModel
+@using DatabaseProject.Models;
+
+@{
+    ViewData["Title"] = "Order History";
+}
+
+<div class="container table-container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>@ViewData["Title"]</h2>
+        <a asp-page="CustomerList" class="btn btn-secondary">Back to Customers</a>
+    </div>
+    
+        <div>
+            <dl class="row">
+                <dt class="col-sm-2">Name:</dt>
+                <dd class="col-sm-10">@Model.selectedCustomer.C_NAME</dd>
+                <dt class="col-sm-2">ID:</dt>
+                <dd class="col-sm-10">@Model.selectedCustomer.C_ID</dd>
+            </dl>
+        </div>
+    <table class="table table-bordered table-hover table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>Order ID</th>
+                <th>Product Name</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.OrdersList)
+            {
+                <tr>
+                    <td>@order.O_ID</td>
+                    <td>
+                        @Model.ProductsList.FirstOrDefault(p => p.Product_ID == order.P_ID)?.Product_name
+                    </td>
+                    <td>@order.Order_Date.ToString("yyyy-MM-dd")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
